@@ -1,0 +1,143 @@
+name: qycli-php
+base: core20
+adopt-info: qycli-php
+summary: PHP for qycli
+description: "PHP for the qycli LEMP stack"
+
+grade: devel
+confinement: devmode
+
+architectures:
+  - build-on: amd64
+
+apps:
+  qycli-php:
+    command:
+
+parts:
+  qycli-php:
+    plugin: autotools
+    override-pull: |
+      phpNewLatestVer=$()
+      phpOldLatestVer=$()
+
+      snapcraftctl set-version "${phpNewLatestVer}+${phpOldLatestVer}"
+
+      curl "" > $SNAPCRAFT_PROJECT_DIR/php-new-latest.tar.gz
+
+      #chmod +x $SNAPCRAFT_PROJECT_DIR/php-sources-pull
+      #$SNAPCRAFT_PROJECT_DIR/php-sources-pull
+
+      snapcraftctl pull
+
+    source: $SNAPCRAFT_PROJECT_DIR/php-new-latest.tar.gz
+    build-packages:
+    autotools-configure-parameters:
+      - --enable-fpm
+      - --disable-cgi
+      - --disable-phpdbg
+
+      - --with-mysqli
+      - --with-curl
+      - --enable-exif
+
+
+      - --enable-zip
+
+      - --enable-soap
+
+
+
+## From Nextcloud
+
+    configflags:
+      - --enable-fpm
+      - --disable-cgi
+      - --disable-phar
+      - --disable-phpdbg
+      - --enable-ctype
+      - --enable-mbstring
+      - --with-zip
+      - --with-pdo-mysql
+      - --with-zlib
+      - --enable-gd
+      - --with-curl
+      - --with-openssl
+      - --with-bz2
+      - --enable-exif
+      - --enable-intl
+      - --enable-pcntl
+      - --with-jpeg
+      - --with-freetype
+      - --disable-rpath
+      - --enable-ftp
+      - --enable-bcmath
+
+      # Enable ldap
+      - --with-libdir=lib/$SNAPCRAFT_ARCH_TRIPLET
+      - --with-ldap
+
+      # Enable gmp
+      - --with-gmp
+
+      # Enable argon2
+      - --with-password-argon2
+
+      # Disable sqlite (we use mysql)
+      - --without-sqlite3
+      - --without-pdo-sqlite
+    build-packages:
+      - libxml2-dev
+      - libcurl4-openssl-dev
+      - libpng-dev
+      - libjpeg8-dev
+      - libbz2-dev
+      - libmcrypt-dev
+      - libldap2-dev
+      - libfreetype6-dev
+      - libgmp-dev
+      - libzip-dev
+      - libargon2-0-dev
+
+      # This is no longer bundled with PHP as of v7.4
+      - libonig-dev
+    stage-packages:
+      - libasn1-8-heimdal
+      - libcurl4
+      - libfreetype6
+      - libgssapi3-heimdal
+      - libhcrypto4-heimdal
+      - libheimbase1-heimdal
+      - libheimntlm0-heimdal
+      - libhx509-5-heimdal
+      - libicu60
+      - libjpeg8
+      - libkrb5-26-heimdal
+      - libldap-2.4-2
+      - libnghttp2-14
+      - libpng16-16
+      - libpsl5
+      - libroken18-heimdal
+      - librtmp1
+      - libsasl2-2
+      - libwind0-heimdal
+      - libxml2
+      - libzip4
+      - libargon2-0
+      - libonig4
+
+
+
+
+  qycli-php-old:
+    plugin: autotools
+    override-pull: |
+      phpOldLatestVer=$()
+
+      curl "" > $SNAPCRAFT_PROJECT_DIR/php-old-latest.tar.gz
+
+      snapcraftctl set-version "${phpNewLatestVer}+${phpOldLatestVer}"
+      snapcraftctl pull
+
+    source: $SNAPCRAFT_PROJECT_DIR/php-old-latest.tar.gz
+    build-packages:

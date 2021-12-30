@@ -1,0 +1,29 @@
+#!/bin/bash
+
+phpVersionCurrentStable=$(curl -s https://www.php.net/downloads.php | tac | tac | grep '<h3 id="v.*"' | tr -d '<h3 id="vclassttle>' | sed -n 1p)
+phpVersionOldStable=$(curl -s https://www.php.net/downloads.php | tac | tac | grep '<h3 id="v.*"' | tr -d '<h3 id="vclassttle>' | sed -n 2p)
+phpVersionSecurityUpdates=$(curl -s https://www.php.net/downloads.php | tac | tac | grep '<h3 id="v.*"' | tr -d '<h3 id="vclassttle>' | sed -n 3p)
+
+wget -qO php-${}.tar.xz $(curl -s https://www.php.net/downloads.php | tac | tac | grep '<h3 id="v.*"' | tr -d '<h3 id="vclassttle>' | sed -n 2p)
+
+
+
+
+
+phpVersion=$(curl -s https://www.php.net/downloads.php | tac | tac | grep '<h3 id="v.*"' | tr -d '<h3 id="vclassttle>' | sed -n 1p)
+wget -qO php-${phpVersion}.tar.xz https://www.php.net/distributions/php-${phpVersion}.tar.xz
+mkdir -p php/${phpVersion}/
+tar -xf php-${phpVersion}.tar.xz --strip-components=1 -C php/${phpVersion}/
+
+
+
+bcmath      ctype  dom           ffi       gd       iconv  ldap      mysqlnd  openssl  pdo_dblib     pdo_odbc    phar      reflection  skeleton  sodium    sysvmsg  tokenizer  xsl
+bz2         curl   enchant       fileinfo  gettext  imap   libxml    oci8     pcntl    pdo_firebird  pdo_pgsql   posix     session     snmp      spl       sysvsem  xml        zend_test
+calendar    date   exif          filter    gmp      intl   mbstring  odbc     pcre     pdo_mysql     pdo_sqlite  pspell    shmop       soap      sqlite3   sysvshm  xmlreader  zip
+com_dotnet  dba    ext_skel.php  ftp       hash     json   mysqli    opcache  pdo      pdo_oci       pgsql       readline  simplexml   sockets   standard  tidy     xmlwriter  zlib
+
+apt -y install php${phpv}-bcmath php${phpv}-common php${phpv}-curl php${phpv}-fpm php${phpv}-gd php${phpv}-imagick \
+php${phpv}-mbstring php${phpv}-mysql php${ver}-redis php${phpv}-soap php${phpv}-xml php${phpv}-zip
+
+
+
