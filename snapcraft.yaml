@@ -64,6 +64,7 @@ parts:
       - wget
       - tar
       - libxml2-dev
+      - pkg-config
       - libcurl4-openssl-dev
       - libpng-dev
       - libjpeg8-dev
@@ -71,7 +72,6 @@ parts:
       - libargon2-0-dev
       - libonig-dev
     autotools-configure-parameters:
-      - --with-libxml-dir=/usr/bin/xml2-config
       - --enable-fpm
       - --disable-cgi
       - --disable-phpdbg
