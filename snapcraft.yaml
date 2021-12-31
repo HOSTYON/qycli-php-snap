@@ -65,6 +65,7 @@ parts:
       - tar
       - libxml2-dev
       - pkg-config
+      - libssl-dev
       - libcurl4-openssl-dev
       - libpng-dev
       - libjpeg8-dev
