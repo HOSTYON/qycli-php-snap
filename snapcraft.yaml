@@ -10,10 +10,6 @@ confinement: devmode
 architectures:
   - build-on: amd64
 
-apps:
-  php-versions:
-    command: cat phpVersions
-
 parts:
   qycli-php-sources:
     plugin: dump
