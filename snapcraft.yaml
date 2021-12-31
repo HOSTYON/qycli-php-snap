@@ -59,6 +59,10 @@ parts:
     source: php_new_stable/
     source-type: local
     build-packages:
+      - software-properties-common
+      - curl
+      - wget
+      - tar
       - libxml2-dev
       - libcurl4-openssl-dev
       - libpng-dev
