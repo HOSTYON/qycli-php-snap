@@ -71,6 +71,7 @@ parts:
       - libargon2-0-dev
       - libonig-dev
     autotools-configure-parameters:
+      - --with-libxml-dir=/usr/bin/xml2-config
       - --enable-fpm
       - --disable-cgi
       - --disable-phpdbg
