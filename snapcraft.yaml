@@ -57,6 +57,7 @@ parts:
     after: [qycli-php-sources]
     plugin: autotools
     source: php_new_stable/
+    source-type: local
     build-packages:
       - libxml2-dev
       - libcurl4-openssl-dev
