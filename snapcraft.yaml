@@ -37,7 +37,6 @@ parts:
       snapcraftctl pull
 
     source: $SNAPCRAFT_PROJECT_DIR/php_new_stable/
-    source-type: local
     build-packages:
       - software-properties-common
       - curl
