@@ -26,17 +26,17 @@ parts:
       wget -qO php_new_stable.tar.xz https://www.php.net/distributions/php-${php_new_stable}.tar.xz
 
       # Unpacking the PHP versions
-      mkdir php_new_stable
-      tar -xf php_new_stable.tar.xz --strip-components=1 -C php_new_stable/
+      mkdir $SNAPCRAFT_PROJECT_DIR/php_new_stable
+      tar -xf php_new_stable.tar.xz --strip-components=1 -C $SNAPCRAFT_PROJECT_DIR/php_new_stable/
 
       # Downloading external extensions
       wget -qO imagick-latest.tgz https://pecl.php.net/get/imagick
-      mkdir php_new_stable/ext/imagick
-      tar -zxf imagick-latest.tgz --strip-components=1 -C php_new_stable/ext/imagick/
+      mkdir $SNAPCRAFT_PROJECT_DIR/php_new_stable/ext/imagick
+      tar -zxf imagick-latest.tgz --strip-components=1 -C $SNAPCRAFT_PROJECT_DIR/php_new_stable/ext/imagick/
 
       snapcraftctl pull
 
-    source: php_new_stable/
+    source: $SNAPCRAFT_PROJECT_DIR/php_new_stable/
     source-type: local
     build-packages:
       - software-properties-common
