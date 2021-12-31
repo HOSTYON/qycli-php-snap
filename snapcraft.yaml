@@ -72,6 +72,7 @@ parts:
       - libzip-dev
       - libargon2-0-dev
       - libonig-dev
+      - libsodium-dev
     autotools-configure-parameters:
       - --enable-fpm
       - --disable-cgi
