@@ -51,6 +51,7 @@ parts:
       #chmod +x $SNAPCRAFT_PROJECT_DIR/php-sources-pull
       #$SNAPCRAFT_PROJECT_DIR/php-sources-pull
     source: phpVersions
+    source-type: local
 
   qycli-php:
     after: [qycli-php-sources]
