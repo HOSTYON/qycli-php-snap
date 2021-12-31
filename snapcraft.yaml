@@ -53,7 +53,7 @@ parts:
     source: phpVersions
 
   qycli-php:
-    after: qycli-php-sources
+    after: [qycli-php-sources]
     plugin: autotools
     source: php_new_stable/
     build-packages:
