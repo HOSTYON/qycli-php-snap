@@ -33,7 +33,7 @@ parts:
       wget -qO imagick-latest.tgz https://pecl.php.net/get/imagick
       mkdir php_new_stable/ext/imagick
       tar -zxf imagick-latest.tgz --strip-components=1 -C php_new_stable/ext/imagick/
-    source: $SNAPCRAFT_STAGE/php_new_stable/
+    source: php_new_stable/
     source-type: local
     build-packages:
       - software-properties-common
