@@ -50,13 +50,13 @@ parts:
 
       #chmod +x $SNAPCRAFT_PROJECT_DIR/php-sources-pull
       #$SNAPCRAFT_PROJECT_DIR/php-sources-pull
-    source: phpVersions
+    source: $SNAPCRAFT_STAGE/phpVersions
     source-type: local
 
   qycli-php:
     after: [qycli-php-sources]
     plugin: autotools
-    source: php_new_stable/
+    source: $SNAPCRAFT_STAGE/php_new_stable/
     source-type: local
     build-packages:
       - software-properties-common
