@@ -1,6 +1,6 @@
 name: qycli-php
 base: core20
-adopt-info: qycli-php-sources
+adopt-info: qycli-php
 summary: PHP for qycli
 description: "PHP for the qycli LEMP stack"
 
@@ -11,8 +11,8 @@ architectures:
   - build-on: amd64
 
 parts:
-  qycli-php-sources:
-    plugin: dump
+  qycli-php:
+    plugin: autotools
     override-pull: |
       curl -s https://www.php.net/downloads.php | tac | tac | grep '<h3 id="v.*"' | tr -d '<h3 id="vclassttle>' > phpVersions
 
@@ -24,34 +24,15 @@ parts:
 
       # Downloading supported PHP versions
       wget -qO php_new_stable.tar.xz https://www.php.net/distributions/php-${php_new_stable}.tar.xz
-      wget -qO php_old_stable.tar.xz https://www.php.net/distributions/php-${php_old_stable}.tar.xz
-      wget -qO php_security_only.tar.xz https://www.php.net/distributions/php-${php_security_only}.tar.xz
 
       # Unpacking the PHP versions
       mkdir php_new_stable
       tar -xf php_new_stable.tar.xz --strip-components=1 -C php_new_stable/
-      mkdir php_old_stable
-      tar -xf php_old_stable.tar.xz --strip-components=1 -C php_old_stable/
-      mkdir php_security_only
-      tar -xf php_security_only.tar.xz --strip-components=1 -C php_security_only/
 
       # Downloading external extensions
       wget -qO imagick-latest.tgz https://pecl.php.net/get/imagick
       mkdir php_new_stable/ext/imagick
       tar -zxf imagick-latest.tgz --strip-components=1 -C php_new_stable/ext/imagick/
-      mkdir php_old_stable/ext/imagick
-      tar -zxf imagick-latest.tgz --strip-components=1 -C php_old_stable/ext/imagick/
-      mkdir php_security_only/ext/imagick
-      tar -zxf imagick-latest.tgz --strip-components=1 -C php_security_only/ext/imagick/
-
-      #chmod +x $SNAPCRAFT_PROJECT_DIR/php-sources-pull
-      #$SNAPCRAFT_PROJECT_DIR/php-sources-pull
-    source: $SNAPCRAFT_STAGE/phpVersions
-    source-type: local
-
-  qycli-php:
-    after: [qycli-php-sources]
-    plugin: autotools
     source: $SNAPCRAFT_STAGE/php_new_stable/
     source-type: local
     build-packages:
