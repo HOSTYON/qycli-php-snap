@@ -43,6 +43,9 @@ parts:
 
     source: $SNAPCRAFT_PROJECT_DIR/php_new_stable/
     source-type: local
+    override-build: |
+      snapcraftctl build
+      cp /php_new_stable/* $SNAPCRAFT_STAGE/php_new_stable/
     build-packages:
       - software-properties-common
       - curl
@@ -62,7 +65,7 @@ parts:
       - libonig-dev
       - libsodium-dev
     autotools-configure-parameters:
-      - --prefix=php_new_stable/
+      - --prefix=/php_new_stable/
       - --enable-fpm
       - --disable-cgi
       - --disable-phpdbg
