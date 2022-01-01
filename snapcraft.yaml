@@ -11,7 +11,7 @@ architectures:
   - build-on: amd64
 
 parts:
-  qycli-php:
+  php-new-stable:
     plugin: autotools
     override-pull: |
       curl -s https://www.php.net/downloads.php | tac | tac | grep '<h3 id="v.*"' | tr -d '<h3 id="vclassttle>' > phpVersions
@@ -43,10 +43,10 @@ parts:
 
     source: $SNAPCRAFT_PROJECT_DIR/php_new_stable/
     source-type: local
-    override-stage: |
-      snapcraftctl stage
-      mkdir $SNAPCRAFT_STAGE/php_new_stable
-      cp -rf /php_new_stable/* $SNAPCRAFT_STAGE/php_new_stable/
+    override-build: |
+      snapcraftctl build
+      mkdir $SNAPCRAFT_PART_INSTALL/php_new_stable
+      cp -rf /php_new_stable/ $SNAPCRAFT_PART_INSTALL/
     build-packages:
       - software-properties-common
       - curl
