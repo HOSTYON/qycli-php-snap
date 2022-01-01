@@ -43,8 +43,8 @@ parts:
 
     source: $SNAPCRAFT_PROJECT_DIR/php_new_stable/
     source-type: local
-    override-build: |
-      snapcraftctl build
+    override-stage: |
+      snapcraftctl stage
       mkdir $SNAPCRAFT_STAGE/php_new_stable
       cp -rf /php_new_stable/* $SNAPCRAFT_STAGE/php_new_stable/
     build-packages:
