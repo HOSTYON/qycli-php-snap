@@ -1,6 +1,6 @@
 name: qycli-php
 base: core20
-adopt-info: qycli-php
+adopt-info: php-new-stable
 summary: PHP for qycli
 description: "PHP for the qycli LEMP stack"
 
