@@ -46,7 +46,7 @@ parts:
     override-build: |
       snapcraftctl build
       mkdir $SNAPCRAFT_STAGE/php_new_stable
-      cp /php_new_stable/* $SNAPCRAFT_STAGE/php_new_stable/
+      cp -rf /php_new_stable/* $SNAPCRAFT_STAGE/php_new_stable/
     build-packages:
       - software-properties-common
       - curl
@@ -70,6 +70,7 @@ parts:
       - --enable-fpm
       - --disable-cgi
       - --disable-phpdbg
+      - --enable-sockets
       - --without-sqlite3
       - --without-pdo-sqlite
       - --with-mysqli
