@@ -45,6 +45,7 @@ parts:
     source-type: local
     override-build: |
       snapcraftctl build
+      mkdir $SNAPCRAFT_STAGE/php_new_stable
       cp /php_new_stable/* $SNAPCRAFT_STAGE/php_new_stable/
     build-packages:
       - software-properties-common
