@@ -34,6 +34,10 @@ parts:
       mkdir $SNAPCRAFT_PROJECT_DIR/php_new_stable/ext/imagick
       tar -zxf imagick-latest.tgz --strip-components=1 -C $SNAPCRAFT_PROJECT_DIR/php_new_stable/ext/imagick/
 
+      # Deleting configure script for extensions to be compiled also
+      cd $SNAPCRAFT_PROJECT_DIR/php_new_stable/
+      rm configure
+
       snapcraftctl pull
 
     source: $SNAPCRAFT_PROJECT_DIR/php_new_stable/
@@ -43,6 +47,7 @@ parts:
       - curl
       - wget
       - tar
+      - php-pear
       - libxml2-dev
       - pkg-config
       - libssl-dev
@@ -68,7 +73,10 @@ parts:
       - --with-openssl
       - --with-zip
       - --enable-bcmath
-      - --with-gd
+      - --enable-gd
+      - --with-jpeg
+      - --with-png
+      - --with-webp
       - --enable-intl
       - --with-sodium
       - --with-zlib
