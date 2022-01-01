@@ -37,6 +37,7 @@ parts:
       # Deleting configure script for extensions to be compiled also
       cd $SNAPCRAFT_PROJECT_DIR/php_new_stable/
       rm configure
+      ./buildconf --force
 
       snapcraftctl pull
 
@@ -77,7 +78,6 @@ parts:
       - --enable-bcmath
       - --enable-gd
       - --with-jpeg
-      - --with-png
       - --with-webp
       - --enable-intl
       - --with-sodium
