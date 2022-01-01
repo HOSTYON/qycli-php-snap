@@ -62,7 +62,6 @@ parts:
       - libonig-dev
       - libsodium-dev
     autotools-configure-parameters:
-      - --prefix=/usr/bin/php/
       - --enable-fpm
       - --disable-cgi
       - --disable-phpdbg
