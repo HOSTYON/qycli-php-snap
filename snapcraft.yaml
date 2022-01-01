@@ -55,6 +55,7 @@ parts:
       - libpng-dev
       - libjpeg8-dev
       - libwebp-dev
+      - ImageMagick-dev
       - libzip-dev
       - libargon2-0-dev
       - libonig-dev
